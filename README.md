@@ -67,58 +67,124 @@ Add modules to  `nuxt.config.js`
 
 
 
-⚠️ **Important** You need to set some width and height. I mainly do this via [CSS aspect-ratio](https://css-tricks.com/snippets/sass/maintain-aspect-ratio-mixin/) technique. You can find an example [here in my other repository](https://github.com/regenrek/nuxt-lazysizes-aspect-ratio-blur)
+⚠️ **Important** The reason why you need to set the width and height manually is that I want to avoid fixed CSS heights or js width/height calculations. The way I do it is mainly via [CSS aspect-ratios](https://css-tricks.com/snippets/sass/maintain-aspect-ratio-mixin/). You can dig in some older examples here on [Codepen](https://codepen.io/kkern/pen/LKmvjx), [Codesandbox](https://codesandbox.io/s/nuxtjs-lazysizes-aspect-ratio-blur-5e3rv) or in this git repo: [nuxt-lazysizes-aspect-ratio-blur](https://github.com/regenrek/nuxt-lazysizes-aspect-ratio-blur).
 
-> Simple Example with image source `~/assets/images/cat.jpg`
+### Simple Usage
+
+
+Simple Example with __default path__ `~/assets/images/cat.jpg`
+> Notice: Aspect-Ratio is a custom class which isn't included - read above
 ```html
 <LazyImage data-src="cat.jpg" class="aspect-ratio-16/9" />
 ```
 
-> Example with external source
+You can use some __external__ image url too
 ```html
 <LazyImage data-src="https://placekitten.com/1200/800" class="aspect-ratio-16/9" />
 ```
 
-> Example with lqip-loader (you need to install lqip-loader first!
+Load an image through some __path__.
+> Be careful you need to use `require()` for this scenario [nuxt.js#448](https://github.com/nuxt/nuxt.js/issues/448), [vuejs#202](https://github.com/vuejs/Discussion/issues/202)
+```html
+<LazyImage data-src="require(`~/assets/media-folder/dog.jpg`)" class="aspect-ratio-16/9" :ignore-img-base-path="true" />
+```
+
+### Smooth Parallax Scrolling
+
+If you like smooth scrolling for your images you can combine [locomotive-scroll](https://locomotivemtl.github.io/locomotive-scroll/) with `nuxt-lazyimage`.
+
+Simple smooth scroll
+```html
+ <LazyImage
+    data-src="cat.jpg"
+    class="aspect-ratio-16/9"
+    smooth-scroll-type="outside"
+  />
+```
+
+Add more scrolling speed (even negative)
+```html
+ <LazyImage
+    data-src="cat.jpg"
+    class="aspect-ratio-16/9"
+    smooth-scroll-type="outside"
+    scroll-speed="-3"
+  />
+```
+
+You can also add some nice effect with inside scrolling
+```html
+<LazyImage
+  data-src="cat.jpg"
+  class="aspect-ratio-16/9"
+  smooth-scroll-type="inside"
+  scroll-speed="1"
+/>
+```
+
+### Viewport Transition Effects
+
+Simple fade in effect for your image
+```html
+<LazyImage
+  data-src="cat.jpg"
+  class="aspect-ratio-16/9 a-fadein"
+  effect="a-fadein"
+/>
+```
+
+Some more effects...
+```html
+<LazyImage
+  data-src="cat.jpg"
+  class="aspect-ratio-16/9"
+  effect="a-reveal a-reveal-left-to-right"
+/>
+<LazyImage
+  data-src="cat.jpg"
+  class="aspect-ratio-16/9"
+  effect="a-reveal a-reveal-top-to-bot"
+/>
+```
+
+⚠️ **Important**  Unfortunately transitions and smooth-scrolling are currently tightly coupled to [locomotive-scroll](https://locomotivemtl.github.io/locomotive-scroll/) viewport library which I personally prefer using atm. That means you definitly need a custom library that gives you an active class on the element if the image scrolls into the current viewport. Also the `animations.css` file uses `is-inview` class from locomotive.
+
+To get it work with other viewport libraries you need to tweak some elements inside the Component. Or you just wrap the `<LazyImage />` with some custom directive and code the animation right away. For example [Akryum/vue-observer-visibility](https://github.com/Akryum/vue-observe-visibility) works very well.
+
+I think this needs some refractor to be able to set your `active` classes yourself - feel free to adapt.
+
+### Use lqip with blur-up technique
+
+Example with lqip-loader
+> You need to install `lqip-loader` first!
 ```html
 <LazyImage data-src="cat.jpg" :use-lqip="true" />
 ```
 
-> Example with custom path and url
-```html
-<LazyImage :data-src="require(`~/assets/media/cat.jpg`)" :ignore-img-base-path="true" />
-```
+### Some more examples
 
-> Choose between object-fit: cover and contain.
+Choose between object-fit: cover and contain.
 > It uses `lazysizes/plugins/object-fit/ls.object-fit` behind the scene
 ```html
 <LazyImage data-src="cat.jpg" :objectFit="contain" />
+<LazyImage data-src="cat.jpg" :objectFit="cover" /> <!-- default -->
 ```
-
-> Get some extra markup for html output to create some nice animations.
-```html
-<LazyImage data-src="cat.jpg" :animationPosition="outside" :effect="a-fadein" />
-<LazyImage data-src="cat.jpg" :animationPosition="inside" :effect="a-reveal a-reveal-bot-to-top" />
-```
-
-**Hint:**  Unfortunately the animations are currently tight coupled to one viewport library I personally prefer. That means you definitly need a custom library that gives you an active class on the element if the image scrolls into the current viewport. I personally use [locomotive-scroll](https://locomotivemtl.github.io/locomotive-scroll/) which is currently default for the component (see `data-scroll` attribute). Also the `animations.css` file use the `is-inview` class for animations.
-
-To get it work with other viewport libraries you need to tweak some elements inside the Component. Or you just wrap the `<LazyImage></LazyImage>` with some custom directive and code the animation right away. For example [Akryum/vue-observer-visibility](https://github.com/Akryum/vue-observe-visibility) works very well.
 
 ## API Reference
 
 ### Props
 
 <!-- @vuese:LazyImage:props:start -->
+
 |Name|Description|Type|Required|Default|
 |---|---|---|---|---|
 |dataSrc|The image URL you want to show|`'cat.jpg'`|`true`|-|
 |objectFit|Specify how the image/video will fit the container|`'cover'` / `'contain'`|`false`|'cover'|
-|animationPosition|Enable animation wrapper. Works currently only with [locomotive-scroll/](https://locomotivemtl.github.io/locomotive-scroll/) library|`'none'` / `'outside'` / `'inside'`|`false`|'none'|
-|effect|Define the animation effect you want to use [locomotive-scroll/](https://locomotivemtl.github.io/locomotive-scroll/)|`'a-reveal'` / `'a-fadein'` / `'custom'`|`false`|''|
-|scrollSpeed|Works only with [locomotive-scroll/](https://locomotivemtl.github.io/locomotive-scroll/) library!|`String`|`false`|'1'|
+|smoothScrollType|Enable animation wrapper. Works currently only with locomotive library|`'none'` / `'outside'` / `'inside'`|`false`|'none'|
+|effect|Define the animation effect you want to use|`'a-reveal'` / `'a-fadein'` / `'custom'`|`false`|''|
+|scrollSpeed|Everything > 0 gets an smooth parallax scroll. Works only with locomotive library!|`String`|`false`|'0'|
 |ignoreImgBasePath|The default path is ~/assets/images.|`Boolean`|`false`|false|
-|useSrcSet|If you disable this prop you will get a simple &lt;img&gt; tag|`Boolean`|`false`|true|
+|useSrcSet|If you disable this prop you will get a simple <img> tag|`Boolean`|`false`|true|
 |useLqip|Use LQIP/blurry image placeholder/Blur up image technique. Needs lqip-loader|`Boolean`|`false`|false|
 
 
@@ -136,7 +202,10 @@ To get it work with other viewport libraries you need to tweak some elements ins
 
 
 
+## Roadmap
 
+1. Add more flexibility for different viewport libraries
+2. Add possibility to use more custom attributes (like scroll-orientation)
 
 ## Development
 

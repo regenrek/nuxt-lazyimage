@@ -2,22 +2,26 @@
   <figure
     :class="[
       objectFit !== '' ? 'is-' + objectFit : '',
-      animationPosition === 'inside' ? 'overflow-hidden' : '',
+      smoothScrollType === 'inside' ? 'overflow-hidden' : '',
       effect !== '' ? effect : ''
     ]"
-    :data-scroll="animationPosition === 'outside'"
-    :data-scroll-speed="scrollSpeed"
+    :data-scroll="smoothScrollType === 'outside' || effect !== ''"
+    :data-scroll-speed="scrollSpeedCheckOutside"
   >
     <div
-      :data-scroll="animationPosition === 'inside'"
-      :data-scroll-speed="scrollSpeed"
-      class="absolute left-0 top-0 w-full h-full"
+      :data-scroll="smoothScrollType === 'inside'"
+      :data-scroll-speed="scrollSpeedCheckInside"
+      :class="{ 'inner-scroll': smoothScrollType === 'inside' }"
     >
       <slot>
         <picture v-if="useSrcSet">
-          <source :data-srcset="image.webp" type="image/webp">
-          <source :data-srcset="image.opt" type="image/jpg">
-          <img :src="useLqip ? image.placeholderBlur : image.opt" class="lazyload" :data-src="image.opt">
+          <source :data-srcset="image.webp" type="image/webp" >
+          <source :data-srcset="image.opt" type="image/jpg" >
+          <img
+            :src="useLqip ? image.placeholderBlur : image.opt"
+            class="lazyload"
+            :data-src="image.opt"
+          >
         </picture>
         <img
           v-else
@@ -46,7 +50,7 @@ export default {
       type: String
     },
     // Enable animation wrapper. Works currently only with locomotive library
-    animationPosition: {
+    smoothScrollType: {
       default: 'none',
       required: false,
       // `'none'` / `'outside'` / `'inside'`
@@ -110,8 +114,20 @@ export default {
         }
       } catch (e) {
         console.error('Couldn`t load images', e)
-        return 'err.jpg'
+        return 'err.jpg';
       }
+    },
+    scrollSpeedCheckInside () {
+      if (this.smoothScrollType === 'outside') {
+        return false
+      }
+      return this.scrollSpeedCheck()
+    },
+    scrollSpeedCheckOutside () {
+      if (this.smoothScrollType === 'inside') {
+        return false
+      }
+      return this.scrollSpeedCheck()
     },
     ignoreBasePath () {
       const regex = new RegExp('^(http|https)://', 'i')
@@ -120,34 +136,20 @@ export default {
       }
       return false
     }
+  },
+  methods: {
+    scrollSpeedCheck () {
+      // if we have setup some smoothScroll you need to add some speed too
+      if (this.scrollSpeed === '0' && this.smoothScrollType !== 'none') {
+        return 1
+      }
+
+      if (this.scrollSpeed === '0') {
+        return false
+      }
+
+      return this.scrollSpeed
+    }
   }
 }
 </script>
-<style>
-img.blur {
-  filter: blur(25px);
-}
-
-img.lazyloaded {
-  opacity: 0;
-  animation-name: fadein;
-  animation-duration: 0.5s;
-  animation-iteration-count: 1;
-  animation-fill-mode: forwards;
-  animation-direction: normal;
-  animation-timing-function: ease-out;
-}
-
-img.lazyloaded.blur {
-    filter: blur(0);
-}
-
-@keyframes fadein {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-</style>
