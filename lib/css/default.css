@@ -1,0 +1,44 @@
+/**
+ Default classes
+**/
+
+figure {
+  overflow: hidden;
+  position: relative;
+  display: block;
+  margin: 0;
+}
+
+figure img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate3d(-50%, -50%, 0);
+}
+
+figure.is-contain img {
+  object-fit: contain;
+  font-family: "object-fit: contain";
+}
+
+figure.is-cover img {
+  object-fit: cover;
+  font-family: "object-fit: cover";
+}
+
+/**
+ LQIP blur up technique
+**/
+
+.blur-up {
+		-webkit-filter: blur(5px);
+		filter: blur(5px);
+		transition: filter 400ms, -webkit-filter 400ms;
+	}
+
+.blur-up.lazyloaded {
+  -webkit-filter: blur(0);
+  filter: blur(0);
+}

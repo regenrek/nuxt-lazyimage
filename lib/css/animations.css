@@ -1,0 +1,80 @@
+/* a-reveal */
+.a-reveal {
+  transition-duration: 0.9s;
+  transition-property: clip-path;
+  transition-timing-function: cubic-bezier(0.77, 0, 0.175, 1);
+  &.is-inview {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  }
+}
+.a-reveal-bot-to-top {
+  clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
+}
+
+.a-reveal-top-to-bot {
+  clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+}
+
+.a-reveal-left-to-right {
+  clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+}
+
+.a-reveal-right-to-left {
+  clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+}
+
+/* a-fadein */
+.a-fadein {
+  opacity: 0;
+  transform: translateY(20px);
+  /*transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);*/
+  transition-property: opacity, transform;
+  transition-duration: 0.8s;
+  transition-delay: 200ms;
+  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  &.is-inview {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media all and (min-width: 768px) {
+  .a-fadein {
+    transform: translateY(20%);
+  }
+}
+
+.a-softfade {
+  opacity: 0;
+  /*transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);*/
+  transition-property: opacity;
+  transition-duration: 0.8s;
+  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  &.is-inview {
+    opacity: 1;
+  }
+}
+
+/* a-word */
+.a-word > span,
+.a-word > h1 > span {
+    display: inline-block;
+    opacity: 0;
+    transform-origin: center top;
+    transform-style: preserve-3d;
+    transform: translateY(100%) rotateX(-80deg);
+    /*transition: opacity 0s cubic-bezier(.215,.61,.355,1),transform 0s cubic-bezier(.215,.61,.355,1);*/
+    transition-property: opacity, transform;
+    transition-duration: 0;
+    transition-timing-function: cubic-bezier(.215,.61,.355,1),cubic-bezier(.215,.61,.355,1);
+}
+
+.a-word.is-inview > span,
+.a-word.is-inview > h1 > span {
+    transform: none;
+    opacity: 1;
+    transition-duration: .8s;
+}
