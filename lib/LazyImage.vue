@@ -44,7 +44,7 @@ export default {
       // `'cover'` / `'contain'`
       type: String
     },
-    // Enable animation wrapper
+    // Enable animation wrapper. Works currently only with locomotive library
     animationPosition: {
       default: 'none',
       required: false,
@@ -53,11 +53,12 @@ export default {
     },
     // Define the animation effect you want to use
     effect: {
-      default: 'reveal',
+      default: 'a-reveal',
       required: false,
-      // `'reveal'` / `'fadein'` / `'custom'`
+      // `'a-reveal'` / `'a-fadein'` / `'custom'`
       type: String
     },
+    // Works only with locomotive library!
     scrollSpeed: {
       default: '1',
       required: false,

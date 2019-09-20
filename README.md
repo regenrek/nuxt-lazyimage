@@ -71,12 +71,12 @@ Add modules to  `nuxt.config.js`
 
 > Simple Example with image source `~/assets/images/cat.jpg`
 ```html
-<LazyImage data-src="cat.jpg" animation-position="inside" class="aspect-ratio-16/9" />
+<LazyImage data-src="cat.jpg" class="aspect-ratio-16/9" />
 ```
 
 > Example with external source
 ```html
-<LazyImage data-src="https://placekitten.com/1200/800" animation-position="inside" class="aspect-ratio-16/9" />
+<LazyImage data-src="https://placekitten.com/1200/800" class="aspect-ratio-16/9" />
 ```
 
 > Example with lqip-loader (you need to install lqip-loader first!
@@ -87,19 +87,23 @@ Add modules to  `nuxt.config.js`
 > Example with custom path and url
 ```html
 <LazyImage :data-src="require(`~/assets/media/cat.jpg`)" :ignore-img-base-path="true" />
+```
 
 > Choose between object-fit: cover and contain.
 > It uses `lazysizes/plugins/object-fit/ls.object-fit` behind the scene
 ```html
 <LazyImage data-src="cat.jpg" :objectFit="contain" />
+```
 
 > Get some extra markup for html output to create some nice animations.
+```html
 <LazyImage data-src="cat.jpg" :animationPosition="outside" :effect="a-fadein" />
-<LazyImage data-src="cat.jpg" :animationPosition="inside" :effect="a-fadein" />
+<LazyImage data-src="cat.jpg" :animationPosition="inside" :effect="a-reveal a-reveal-bot-to-top" />
 ```
-**Hint:**  Unfortunately the animations are currently tight coupled to one viewport library I personally prefer. That means you definitly need a custom library that gives you an active class on the element if the image scrolls into the current viewport. I personally use [locomotive-scroll/](https://locomotivemtl.github.io/locomotive-scroll/) which is currently default for the component (see `data-scroll` attribute). Also the `animations.css` file use the `is-inview` class for animations.
 
-To get it work with other viewport libraries you need to tweak some elements inside the Component. Or you just wrap the `<LazyImage></LazyImage>` with some custom directive and code the animation right away. Like you can use [Akryum/vue-observer-visibility](https://github.com/Akryum/vue-observe-visibility).
+**Hint:**  Unfortunately the animations are currently tight coupled to one viewport library I personally prefer. That means you definitly need a custom library that gives you an active class on the element if the image scrolls into the current viewport. I personally use [locomotive-scroll](https://locomotivemtl.github.io/locomotive-scroll/) which is currently default for the component (see `data-scroll` attribute). Also the `animations.css` file use the `is-inview` class for animations.
+
+To get it work with other viewport libraries you need to tweak some elements inside the Component. Or you just wrap the `<LazyImage></LazyImage>` with some custom directive and code the animation right away. For example [Akryum/vue-observer-visibility](https://github.com/Akryum/vue-observe-visibility) works very well.
 
 ## API Reference
 
@@ -110,12 +114,13 @@ To get it work with other viewport libraries you need to tweak some elements ins
 |---|---|---|---|---|
 |dataSrc|The image URL you want to show|`'cat.jpg'`|`true`|-|
 |objectFit|Specify how the image/video will fit the container|`'cover'` / `'contain'`|`false`|'cover'|
-|animationPosition|Enable animation wrapper|`'none'` / `'outside'` / `'inside'`|`false`|'none'|
-|effect|Define the animation effect you want to use|`'a-reveal'` / `'a-fadein'` / `'custom'`|`false`|'reveal'|
-|scrollSpeed|-|`String`|`false`|'1'|
+|animationPosition|Enable animation wrapper. Works currently only with [locomotive-scroll/](https://locomotivemtl.github.io/locomotive-scroll/) library|`'none'` / `'outside'` / `'inside'`|`false`|'none'|
+|effect|Define the animation effect you want to use [locomotive-scroll/](https://locomotivemtl.github.io/locomotive-scroll/)|`'a-reveal'` / `'a-fadein'` / `'custom'`|`false`|'a-reveal'|
+|scrollSpeed|Works only with [locomotive-scroll/](https://locomotivemtl.github.io/locomotive-scroll/) library!|`String`|`false`|'1'|
 |ignoreImgBasePath|The default path is ~/assets/images.|`Boolean`|`false`|false|
-|useSrcSet|If you disable this prop you will get a simple <img> tag|`Boolean`|`false`|true|
+|useSrcSet|If you disable this prop you will get a simple &lt;img&gt; tag|`Boolean`|`false`|true|
 |useLqip|Use LQIP/blurry image placeholder/Blur up image technique. Needs lqip-loader|`Boolean`|`false`|false|
+
 
 <!-- @vuese:LazyImage:props:end -->
 
