@@ -1,6 +1,6 @@
 {
   "name": "nuxt-lazyimage",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "a nuxt lazy loader for images built on lazysizes",
   "license": "MIT",
   "contributors": [
