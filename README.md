@@ -150,7 +150,7 @@ Some more effects...
 
 To get it work with other viewport libraries you need to tweak some elements inside the Component. Or you just wrap the `<LazyImage />` with some custom directive and code the animation right away. For example [Akryum/vue-observer-visibility](https://github.com/Akryum/vue-observe-visibility) works very well.
 
-I think this needs some refractor to be able to set your `active` classes yourself - feel free to adapt.
+I think this needs some refactoring to be able to set your `active` classes yourself - feel free to adapt.
 
 ### Use lqip with blur-up technique
 
