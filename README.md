@@ -165,8 +165,8 @@ Example with lqip-loader
 Choose between object-fit: cover and contain.
 > It uses `lazysizes/plugins/object-fit/ls.object-fit` behind the scene
 ```html
-<LazyImage data-src="cat.jpg" :objectFit="contain" />
-<LazyImage data-src="cat.jpg" :objectFit="cover" /> <!-- default -->
+<LazyImage data-src="cat.jpg" objectFit="contain" />
+<LazyImage data-src="cat.jpg" objectFit="cover" /> <!-- default -->
 ```
 
 ## API Reference
