@@ -14,8 +14,7 @@ This module offers you a `<LazyImage>` Component which handles lazy loading for 
 
 ## Demo
 
-* You can find a full working example in my other Git Repository [here](https://github.com/regenrek/nuxt-lazysizes-aspect-ratio-blur)
-* Or you dig through the [CodeSandbox Example](https://codesandbox.io/s/nuxtjs-lazysizes-aspect-ratio-blur-5e3rv)
+* [CodeSandbox Example](https://codesandbox.io/embed/nuxt-lazyimage-example-ix4x5)
 
 
 ## Features
@@ -67,7 +66,7 @@ Add modules to  `nuxt.config.js`
 
 
 
-⚠️ **Important** The reason why you need to set the width and height manually is that I want to avoid fixed CSS heights or js width/height calculations. The way I do it is mainly via [CSS aspect-ratios](https://css-tricks.com/snippets/sass/maintain-aspect-ratio-mixin/). You can dig in some older examples here on [Codepen](https://codepen.io/kkern/pen/LKmvjx), [Codesandbox](https://codesandbox.io/s/nuxtjs-lazysizes-aspect-ratio-blur-5e3rv) or in this git repo: [nuxt-lazysizes-aspect-ratio-blur](https://github.com/regenrek/nuxt-lazysizes-aspect-ratio-blur).
+⚠️ **Important** The reason why you need to set the width and height manually is that I want to avoid fixed CSS heights or js width/height calculations. The way I do it is mainly via [CSS aspect-ratios](https://css-tricks.com/snippets/sass/maintain-aspect-ratio-mixin/). You can dig in some older examples here on [Codepen](https://codepen.io/kkern/pen/LKmvjx), [Codesandbox](https://codesandbox.io/embed/nuxt-lazyimage-example-ix4x5) or in this git repo: [nuxt-lazysizes-aspect-ratio-blur](https://github.com/regenrek/nuxt-lazysizes-aspect-ratio-blur).
 
 ### Simple Usage
 
