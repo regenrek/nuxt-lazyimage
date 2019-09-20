@@ -115,7 +115,7 @@ To get it work with other viewport libraries you need to tweak some elements ins
 |dataSrc|The image URL you want to show|`'cat.jpg'`|`true`|-|
 |objectFit|Specify how the image/video will fit the container|`'cover'` / `'contain'`|`false`|'cover'|
 |animationPosition|Enable animation wrapper. Works currently only with [locomotive-scroll/](https://locomotivemtl.github.io/locomotive-scroll/) library|`'none'` / `'outside'` / `'inside'`|`false`|'none'|
-|effect|Define the animation effect you want to use [locomotive-scroll/](https://locomotivemtl.github.io/locomotive-scroll/)|`'a-reveal'` / `'a-fadein'` / `'custom'`|`false`|'a-reveal'|
+|effect|Define the animation effect you want to use [locomotive-scroll/](https://locomotivemtl.github.io/locomotive-scroll/)|`'a-reveal'` / `'a-fadein'` / `'custom'`|`false`|''|
 |scrollSpeed|Works only with [locomotive-scroll/](https://locomotivemtl.github.io/locomotive-scroll/) library!|`String`|`false`|'1'|
 |ignoreImgBasePath|The default path is ~/assets/images.|`Boolean`|`false`|false|
 |useSrcSet|If you disable this prop you will get a simple &lt;img&gt; tag|`Boolean`|`false`|true|

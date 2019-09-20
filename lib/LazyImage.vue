@@ -2,7 +2,8 @@
   <figure
     :class="[
       objectFit !== '' ? 'is-' + objectFit : '',
-      animationPosition === 'inside' ? 'overflow-hidden' : ''
+      animationPosition === 'inside' ? 'overflow-hidden' : '',
+      effect !== '' ? effect : ''
     ]"
     :data-scroll="animationPosition === 'outside'"
     :data-scroll-speed="scrollSpeed"
@@ -53,14 +54,14 @@ export default {
     },
     // Define the animation effect you want to use
     effect: {
-      default: 'a-reveal',
+      default: '',
       required: false,
       // `'a-reveal'` / `'a-fadein'` / `'custom'`
       type: String
     },
-    // Works only with locomotive library!
+    // Everything > 0 gets an smooth parallax scroll. Works only with locomotive library!
     scrollSpeed: {
-      default: '1',
+      default: '0',
       required: false,
       type: String
     },
