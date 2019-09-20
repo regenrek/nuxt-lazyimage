@@ -15,8 +15,8 @@
     >
       <slot>
         <picture v-if="useSrcSet">
-          <source :data-srcset="image.webp" type="image/webp" >
-          <source :data-srcset="image.opt" type="image/jpg" >
+          <source :data-srcset="image.webp" type="image/webp">
+          <source :data-srcset="image.opt" type="image/jpg">
           <img
             :src="useLqip ? image.placeholderBlur : image.opt"
             class="lazyload"
@@ -114,7 +114,7 @@ export default {
         }
       } catch (e) {
         console.error('Couldn`t load images', e)
-        return 'err.jpg';
+        return 'err.jpg'
       }
     },
     scrollSpeedCheckInside () {

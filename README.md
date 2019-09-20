@@ -14,6 +14,8 @@ This module offers you a `<LazyImage>` Component which handles lazy loading for 
 
 ## Demo
 
+![nuxt-lazyimage](http://i.imgur.com/47fqee5h.gif)
+
 * [CodeSandbox Example](https://codesandbox.io/embed/nuxt-lazyimage-example-ix4x5)
 
 
