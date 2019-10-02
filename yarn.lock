@@ -6382,9 +6382,9 @@ locate-path@^5.0.0:
   dependencies:
     p-locate "^4.1.0"
 
-locomotive-scroll@regenrek/locomotive-scroll:
-  version "3.1.5"
-  resolved "https://codeload.github.com/regenrek/locomotive-scroll/tar.gz/0d341d5c3df959570908b779c9d8ba7a7f68a4a5"
+locomotive-scroll@^3.1.7:
+  version "3.1.7"
+  resolved "https://registry.yarnpkg.com/locomotive-scroll/-/locomotive-scroll-3.1.7.tgz#534e28de85b9eeeb94dd6b87122b146691d971e8"
   dependencies:
     smoothscroll-polyfill "^0.4.4"
     virtual-scroll "git+https://github.com/ayamflow/virtual-scroll.git"
