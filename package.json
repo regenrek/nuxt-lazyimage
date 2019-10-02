@@ -1,6 +1,6 @@
 {
   "name": "nuxt-lazyimage",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "a nuxt lazy loader for images built on lazysizes",
   "license": "MIT",
   "contributors": [
@@ -25,7 +25,7 @@
   "dependencies": {
     "@bazzite/nuxt-optimized-images": "^0.2.1",
     "lazysizes": "^5.1.1",
-    "locomotive-scroll": "locomotivemtl/locomotive-scroll",
+    "locomotive-scroll": "latest",
     "lqip-loader": "^2.2.0"
   },
   "devDependencies": {
