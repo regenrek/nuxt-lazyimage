@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-lazyimage",
+  "name": "@nuxtjs/lazyimage",
   "version": "0.0.14",
   "description": "a nuxt lazy loader for images built on lazysizes",
   "license": "MIT",
@@ -43,7 +43,7 @@
     "husky": "latest",
     "imagemin-mozjpeg": "^8.0.0",
     "jest": "latest",
-    "nuxt-edge": "latest",
+    "nuxt": "latest",
     "request": "latest",
     "request-promise-native": "latest",
     "responsive-loader": "^1.2.0",
