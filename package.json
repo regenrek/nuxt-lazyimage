@@ -1,6 +1,6 @@
 {
-  "name": "@nuxtjs/lazyimage",
-  "version": "2.0.1-alpha.0",
+  "name": "nuxt-lazyimage",
+  "version": "2.0.1",
   "description": "a nuxt lazy loader for images built on lazysizes",
   "license": "MIT",
   "contributors": [
