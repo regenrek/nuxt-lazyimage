@@ -1,6 +1,6 @@
 {
   "name": "@nuxtjs/lazyimage",
-  "version": "0.0.14",
+  "version": "2.0.1-alpha.0",
   "description": "a nuxt lazy loader for images built on lazysizes",
   "license": "MIT",
   "contributors": [
@@ -17,7 +17,7 @@
     "dev": "nuxt example",
     "lint": "eslint --ext .js,.vue example lib test",
     "test": "yarn lint && jest",
-    "release": "yarn test && standard-version && git push --follow-tags && npm publish"
+    "release": "standard-version"
   },
   "files": [
     "lib"

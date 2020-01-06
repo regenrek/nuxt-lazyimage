@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.1-alpha.0](https://github.com/regenrek/nuxt-lazyimage/compare/v0.0.14...v2.0.1-alpha.0) (2020-01-06)
+
 ### [0.0.14](https://github.com/regenrek/nuxt-lazyimage/compare/v0.0.13...v0.0.14) (2019-10-02)
 
 ### [0.0.13](https://github.com/regenrek/nuxt-lazyimage/compare/v0.0.12...v0.0.13) (2019-10-02)
