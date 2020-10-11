@@ -6347,8 +6347,8 @@ launch-editor@^2.2.1:
     shell-quote "^1.6.1"
 
 lazysizes@^5.1.1:
-  version "5.1.1"
-  resolved "https://registry.yarnpkg.com/lazysizes/-/lazysizes-5.1.1.tgz#7ca0266519d531ce740d6782e42faf700883646c"
+  version "5.2.1"
+  resolved "https://registry.yarnpkg.com/lazysizes/-/lazysizes-5.2.1.tgz#f450e36a995efb5817acb8c904f3d2f2efc29ffa"
 
 left-pad@^1.3.0:
   version "1.3.0"
